@@ -139,7 +139,8 @@ const AuctionPanel = () => {
 
     function calculateDailyFlex() {
         if (currentDay < 4) {
-            const flexAmount = Number(flexPerDay[0]).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            const day = currentDay ? currentDay - 1 : 0;
+            const flexAmount = Number(flexPerDay[day]).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
             return flexAmount
         } else {
             const flexAmount = Number(flexPerDay[2] - currentDay * dailyDeduction).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
