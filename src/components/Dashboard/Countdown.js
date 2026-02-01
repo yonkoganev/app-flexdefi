@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { day_length, launchTimestamp } from "@/constants/TimestampLaunch";
 
+// Convert seconds → ms ONCE
+const DAY_MS = day_length * 1000;
+
 function formatHHMMSS(ms) {
-  const totalSeconds = Math.floor(ms / 1000);
-  const hours = Math.floor(totalSeconds / day_length);
-  const minutes = Math.floor((totalSeconds % day_length) / 60);
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
 
   return [
@@ -17,8 +21,8 @@ function formatHHMMSS(ms) {
 export function Countdown() {
   const [state, setState] = useState({
     day: 0,
-    remainingMs: day_length,
-    formatted: formatHHMMSS(day_length),
+    remainingMs: DAY_MS,
+    formatted: formatHHMMSS(DAY_MS),
   });
 
   useEffect(() => {
@@ -37,14 +41,12 @@ export function Countdown() {
         return;
       }
 
-      // 🚀 AFTER LAUNCH → your existing logic
-      const elapsed = now - launchTimestamp;
+      // 🚀 AFTER LAUNCH → day-cycle logic
+      const elapsedMs = now - launchTimestamp;
 
-      const currentDay = Math.floor(elapsed / day_length);
-      const timeIntoDay = elapsed % day_length;
-
-      const remainingMs =
-        timeIntoDay === 0 ? 0 : day_length - timeIntoDay;
+      const currentDay = Math.floor(elapsedMs / DAY_MS);
+      const timeIntoDay = elapsedMs % DAY_MS;
+      const remainingMs = DAY_MS - timeIntoDay;
 
       setState({
         day: currentDay,
