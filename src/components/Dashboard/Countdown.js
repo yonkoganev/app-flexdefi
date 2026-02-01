@@ -25,16 +25,19 @@ export function Countdown() {
     const interval = setInterval(() => {
       const now = Date.now();
 
-      // Before launch
+      // ⏳ BEFORE LAUNCH → real countdown
       if (now < launchTimestamp) {
+        const remainingMs = launchTimestamp - now;
+
         setState({
           day: 0,
-          remainingMs: day_length,
-          formatted: formatHHMMSS(day_length),
+          remainingMs,
+          formatted: formatHHMMSS(remainingMs),
         });
         return;
       }
 
+      // 🚀 AFTER LAUNCH → your existing logic
       const elapsed = now - launchTimestamp;
 
       const currentDay = Math.floor(elapsed / day_length);
