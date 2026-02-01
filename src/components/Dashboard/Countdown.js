@@ -29,7 +29,7 @@ export function Countdown() {
       if (now < launchTimestamp) {
         setState({
           day: 0,
-          remainingMs: DAY_LENGTH,
+          remainingMs: day_length,
           formatted: formatHHMMSS(day_length),
         });
         return;
@@ -37,11 +37,11 @@ export function Countdown() {
 
       const elapsed = now - launchTimestamp;
 
-      const currentDay = Math.floor(elapsed / DAY_LENGTH);
-      const timeIntoDay = elapsed % DAY_LENGTH;
+      const currentDay = Math.floor(elapsed / day_length);
+      const timeIntoDay = elapsed % day_length;
 
       const remainingMs =
-        timeIntoDay === 0 ? 0 : DAY_LENGTH - timeIntoDay;
+        timeIntoDay === 0 ? 0 : day_length - timeIntoDay;
 
       setState({
         day: currentDay,
