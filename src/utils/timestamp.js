@@ -1,0 +1,1 @@
+export const genesisTimestamp = 1753123276000; // Genesis time
