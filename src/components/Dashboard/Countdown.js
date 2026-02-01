@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { day_length, launchTimestamp } from "@/constants/TimestampLaunch";
 
-const DAY_LENGTH = 60 * 60 * 1000; // 10 minutes
-
 function formatHHMMSS(ms) {
   const totalSeconds = Math.floor(ms / 1000);
-  const duration_day = day_length
-  const hours = Math.floor(totalSeconds / duration_day);
-  const minutes = Math.floor((totalSeconds % duration_day) / 60);
+  const hours = Math.floor(totalSeconds / day_length);
+  const minutes = Math.floor((totalSeconds % day_length) / 60);
   const seconds = totalSeconds % 60;
 
   return [
@@ -20,8 +17,8 @@ function formatHHMMSS(ms) {
 export function Countdown() {
   const [state, setState] = useState({
     day: 0,
-    remainingMs: DAY_LENGTH,
-    formatted: formatHHMMSS(DAY_LENGTH),
+    remainingMs: day_length,
+    formatted: formatHHMMSS(day_length),
   });
 
   useEffect(() => {
@@ -33,7 +30,7 @@ export function Countdown() {
         setState({
           day: 0,
           remainingMs: DAY_LENGTH,
-          formatted: formatHHMMSS(DAY_LENGTH),
+          formatted: formatHHMMSS(day_length),
         });
         return;
       }
