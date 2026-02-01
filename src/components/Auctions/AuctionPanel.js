@@ -138,6 +138,7 @@ const AuctionPanel = () => {
     };
 
     function calculateDailyFlex() {
+        if (!currentDay) return;
         if (currentDay < 4) {
             const day = currentDay ? currentDay - 1 : 0;
             const flexAmount = Number(flexPerDay[day]).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
@@ -149,18 +150,21 @@ const AuctionPanel = () => {
     }
 
     function calculateDailyRatio() {
+        let ratio;
         if (currentDay < 4) {
             const flexAmount = Number(flexPerDay[0]);
-            const ratio = auctionStats ? flexAmount / formatEther(auctionStats[1]) : 0;
+            ratio = auctionStats ? flexAmount / formatEther(auctionStats[1]) : 0;
             if (ratio > 1000000000) {
-                return 0;
+                const flexAmount = Number(flexPerDay[currentDay - 1]);
+                return flexAmount
             }
             return ratio
         } else {
             const flexAmount = Number(flexPerDay[2] - currentDay * dailyDeduction);
             const ratio = auctionStats ? (flexAmount / formatEther(auctionStats[1])) : 0;
             if (ratio > 1000000000) {
-                return 0;
+                const flexAmount = Number(flexPerDay[2] - currentDay * dailyDeduction);
+                return flexAmount;
             }
             return ratio
         }
@@ -169,7 +173,7 @@ const AuctionPanel = () => {
     function calculateMyShare(amount) {
         if (!auctionStats) return;
         if (currentDay === 0) return 0;
-        if ((!amount && hasContributed === 0) || (amount <= 0 && hasContributed === 0)) return 0;
+        if ((!amount && hasContributed === 0) || (amount <= 0 && hasContributed <= 0)) return `0.00`;
         const hasContributedformmatted = Number(formatEther(hasContributed ?? 0n));
         const formattedAmount = Number(amount);
         const contributed = Number(formatEther(auctionStats[1]));

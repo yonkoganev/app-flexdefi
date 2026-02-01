@@ -16,14 +16,13 @@ const DailyAuctions = () => {
 
     function calculateDailyFlex() {
         if (!currentDay) return;
-        if (currentDay === 0) {
-            return 0;
-        } else if (currentDay < 4) {
-            const flexAmount = Number(flexPerDay[currentDay - 1] / 1000000).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
-            return flexAmount;
+        if (currentDay < 4) {
+            const day = currentDay ? currentDay - 1 : 0;
+            const flexAmount = (Number(flexPerDay[day]) / 1000000).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            return flexAmount
         } else {
-            const flexAmount = Number((flexPerDay[2] - ((currentDay - 3) * dailyDeduction)) / 1000000).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
-            return flexAmount;
+            const flexAmount = (Number(flexPerDay[2] - currentDay * dailyDeduction) / 1000000).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            return flexAmount
         }
     }
 
