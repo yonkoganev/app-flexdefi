@@ -228,7 +228,7 @@ const AuctionPanel = () => {
                 border: 1,
                 borderRadius: 1,
                 mt: isActive ? 0 : 5,
-                mb: isActive ? 0 : 5,
+                mb: isActive ? 0 : 2,
                 background: cardColor,
                 borderColor: borderColor
             }}
