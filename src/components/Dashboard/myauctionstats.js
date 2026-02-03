@@ -29,7 +29,7 @@ const sections = [
         secondIcon: <Image src="/assets/usdtlogo.png" alt="logo" width={40} height={40} />,
         thirdIcon: <Image src="/assets/flexsquarelogo.png" alt="logo" width={40} height={40} />,
         fourthIcon: <HowToRegIcon style={{ color: grey[50] }} />,
-        firstText: ['0', 'BigPayDays received'],
+        firstText: ['0', 'BPD(s) received'],
         secondText: ['0.00', 'USDT contributed'],
         thirdText: ['0.00', 'FLEX received'],
         fourthText: 'Eligible for BPD',
