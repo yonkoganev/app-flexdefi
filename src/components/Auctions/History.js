@@ -15,6 +15,7 @@ import { formatEther } from "viem";
 
 import { borderColor, cardColor } from "@/constants/colors";
 import { useGetAllAuctionStats } from "../web3/hooks/useGetAllAuctionStats";
+import { useGetCurrentDay } from "../web3/hooks/useGetCurrentDay";
 
 /* =======================
    Table configuration
@@ -64,10 +65,10 @@ const BODY_COLUMNS = [
 
       if (donated === 0) return "0.00";
 
-      return (generated / donated).toLocaleString("en-us", {
+      return `${(generated / donated).toLocaleString("en-us", {
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
-      });
+      })} per USDT`;
     },
   },
 ];
@@ -77,6 +78,7 @@ const BODY_COLUMNS = [
 ======================= */
 
 export default function History() {
+  const { data: currentDay } = useGetCurrentDay();
   const { allStats, isLoading, isError } = useGetAllAuctionStats();
 
   if (isLoading) {
@@ -151,10 +153,10 @@ export default function History() {
             <TableBody>
               {allStats.map((row) => (
                 <TableRow key={row.day}>
-                  {BODY_COLUMNS.map((col) => (
+                  {BODY_COLUMNS.map((col, id) => (
                     <TableCell
                       key={col.key}
-                      sx={{ color: grey[50], borderColor, px: 3 }}
+                      sx={{ color: grey[50], borderColor, px: 3, whiteSpace: 'nowrap' }}
                     >
                       <Box display="flex" alignItems="center" gap={1}>
                         <span>{col.render(row)}</span>
