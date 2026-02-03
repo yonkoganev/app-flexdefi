@@ -244,7 +244,7 @@ const StakePanel = ({
           <Typography color={grey[50]} fontWeight={550}>
             Stake name:
           </Typography>
-          <Grid container width="60%">
+          <Grid container flexGrow={1} maxWidth="50%">
             <StakeNameInput value={stakeName} onChange={setStakeName} />
           </Grid>
         </Grid>
@@ -260,7 +260,7 @@ const StakePanel = ({
           <Typography color={grey[50]} fontWeight={550}>
             FLEX amount:
           </Typography>
-          <Grid container width="60%">
+          <Grid container flexGrow={1} maxWidth="50%">
             <TextField
               value={amount}
               onChange={handleChange}
@@ -315,7 +315,7 @@ const StakePanel = ({
           <Typography color={grey[50]} fontWeight={550}>
             Stake duration:
           </Typography>
-          <Grid container width="60%">
+          <Grid container flexGrow={1} maxWidth="50%">
             <StakingDaysInput value={days} onChange={changeDays} />
           </Grid>
         </Grid>
