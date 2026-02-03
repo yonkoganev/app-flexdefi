@@ -40,7 +40,9 @@ const StakingStats = () => {
         }
         let shares;
         shares = Number(formatEther(globals?.[1]));
-        if (shares > 1000000) {
+        if (shares > 1000000000) {
+            shares = `${(shares / 1000000000).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })}B`;
+        } else if (shares > 1000000 && shares < 1000000000) {
             shares = `${(shares / 1000000).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })}M`;
         } else if (shares > 1000 && shares < 1000000) {
             shares = `${(shares / 1000).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })}K`;
