@@ -181,7 +181,7 @@ const StakesList = ({ stakes, onChange }) => {
   /* ------------------- RENDER ------------------- */
     return (
         <>
-            <Grid size={{ lg: 8.15, md: 11.9, sm: 12, xs: 12 }} sx={{ p: 2, background: cardColor, border: borderColor, borderRadius: 1 }}>
+            <Grid size={{ lg: 8.15, md: 11.9, sm: 12, xs: 12 }} sx={{ p: 2, border: 1, background: cardColor, borderColor: borderColor, borderRadius: 1 }}>
                 <Box sx={{ border: 1, width: '100%', display: 'flex', borderRadius: 1, borderColor: borderColor, justifyContent: 'center', flexDirection: 'column' }} >
                     <Typography color={grey[50]} fontSize={22} fontWeight={600} mb={1} p={2}>
                         Active Stakes
@@ -189,7 +189,7 @@ const StakesList = ({ stakes, onChange }) => {
                     {renderTable(activeStakes, true)}
                 </Box>
             </Grid>               
-            <Grid size={{ lg: 8.15, md: 12, sm: 12, xs: 12 }} sx={{ p: 2, background: cardColor, border: borderColor, borderRadius: 1 }}>
+            <Grid size={{ lg: 8.15, md: 12, sm: 12, xs: 12 }} sx={{ p: 2, border: 1, background: cardColor, borderColor: borderColor, borderRadius: 1 }}>
                 <Box sx={{ border: 1, width: '100%', display: 'flex', borderRadius: 1, borderColor: borderColor, justifyContent: 'center', flexDirection: 'column' }} >
                     <Typography color={grey[50]} fontSize={22} fontWeight={600} mb={1} p={2}>
                         Closed Stakes
