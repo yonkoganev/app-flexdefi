@@ -116,8 +116,8 @@ const StakesList = ({ stakes, onChange }) => {
                         </Grid>
                     </TableCell>
                     <TableCell sx={{...cellStyle}}>{formatAmount(stake.stakesShares)}</TableCell>
-                    <TableCell sx={{...cellStyle}}>{dayToTime(stake.startDay)}</TableCell>
-                    <TableCell sx={{...cellStyle}}>{dayToTime(stake.finalDay)}</TableCell>
+                    <TableCell sx={{...cellStyle}}>{dayToTime(stake.startDay)} (Day: {stake.startDay})</TableCell>
+                    <TableCell sx={{...cellStyle}}>{dayToTime(stake.finalDay)} (Day: {stake.finalDay})</TableCell>
                     <TableCell sx={{...cellStyle, minWidth: 150, fontWeight: 900}}>
                         <Grid container gap={1}>
                             {formatAmount(stake.reward)}
