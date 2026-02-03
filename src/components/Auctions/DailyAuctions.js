@@ -4,6 +4,7 @@ import { grey } from "@mui/material/colors";
 import { Avatar, Grid, Typography } from "@mui/material";
 import { useGetCurrentDay } from "../web3/hooks/useGetCurrentDay";
 import { useGetAuctionStatsOfDay } from "../web3/hooks/useGetAuctionStatsOfDay";
+import History from "./History";
 
 const flexPerDay = [20000000, 14000000, 9000000];
 
@@ -90,7 +91,10 @@ const DailyAuctions = () => {
                             {currentDay > 150 ? 'Auction phase have ended on Day 150' : 'Auction phase starts on Day 1'}
                         </Typography>
                     ) : (
-                        <AuctionPanel />
+                        <>
+                            <AuctionPanel />
+                            <History />
+                        </>
                     )
                 }
             </Grid>

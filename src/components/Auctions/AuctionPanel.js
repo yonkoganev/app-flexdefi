@@ -30,7 +30,7 @@ const AuctionPanel = () => {
     const { data: usdtBalance, refetch: refetchBalance } = useGetBalanceOfUSDT();
     const { data: allowance, refetch: refetchAllowance } = useGetAllowanceAuction();
     const { data: donators, refetch: refetchDonators } = useGetDonatorAccountCount({ day: currentDay ? currentDay : 0 });
-    const { data: auctionStats, refetch: refetchStats } = useGetAuctionStatsOfDay({ day: currentDay ? currentDay : 12 });
+    const { data: auctionStats, refetch: refetchStats } = useGetAuctionStatsOfDay({ day: currentDay ? currentDay : 0 });
     const { data: hasContributed, refetch: refetchHasContributed } = useGetHasContributed({ day: currentDay && currentDay });
 
     //Modals
