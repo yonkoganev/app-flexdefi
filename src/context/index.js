@@ -4,15 +4,15 @@
 import { wagmiAdapter, projectId } from '@/config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createAppKit } from '@reown/appkit/react';
-import { bscTestnet, mainnet } from '@reown/appkit/networks';
+import { bscTestnet, bsc } from '@reown/appkit/networks';
 import { cookieToInitialState, WagmiProvider } from 'wagmi';
 import React from 'react';
 
 const queryClient = new QueryClient();
 
 const metadata = {
-  name: 'ONCrypto',
-  description: 'ONCrypto App',
+  name: 'FLEX',
+  description: 'High-Yield hybrid rewards',
   url: 'https://localhost:3000', // use your domain in production
   icons: ['https://assets.reown.com/reown-profile-pic.png']
 };
@@ -21,8 +21,8 @@ const metadata = {
 export const modal = createAppKit({
   adapters: [wagmiAdapter],
   projectId,
-  networks: [bscTestnet],
-  defaultNetwork: mainnet,
+  networks: [bscTestnet, bsc],
+  defaultNetwork: bscTestnet,
   metadata,
   features: {
     analytics: false,
