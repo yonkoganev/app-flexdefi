@@ -28,7 +28,7 @@ export function useWithdrawDivid() {
       // 2️⃣ Attempt withdraw tx
       const tx = await writeContractAsync({
         chainId: bsc.id,
-        address: flexContracts.divid[bsc.id],
+        address: flexContracts.divid,
         abi: DIV_ABI,
         functionName: 'withdrawStake',
         args: [FULL_AMOUNT, STAKE_INDEX],
