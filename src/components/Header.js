@@ -21,7 +21,7 @@ const Header = () => {
         { text: "Dashboard", path: "/dashboard", icon: <MdDashboard style={{ color: grey[50] }} /> },
         { text: "Auction", path: "/auction", icon: <RiAuctionFill style={{ color: grey[50] }} /> },
         { text: "Stake", path: "/stake", icon: <FaCoins style={{ color: grey[50] }} /> },
-        { text: "Predictions", path: "/predictions", icon: <MdOutlineSsidChart style={{ color: grey[50] }} /> }
+        //{ text: "Predictions", path: "/predictions", icon: <MdOutlineSsidChart style={{ color: grey[50] }} /> }
     ];
 
     return (
@@ -74,7 +74,7 @@ const Header = () => {
                         container
                         width="90%"
                         alignItems="center"
-                        justifyContent="space-between"
+                        justifyContent="space-evenly"
                         sx={{
                             height: 50,
                             mt: 0.75,
