@@ -38,7 +38,9 @@ const Header = () => {
                 justifyContent="space-between"
                 sx={{ borderBottom: 1, borderColor: borderColor }}
             >
-                <Image src="/assets/flextransparentlogo.png" alt="logo" height={45} width={45} style={{ filter: 'grayscale(100%)' }} />
+                <Grid onClick={() => router.push("/")} sx={{ zIndex: 999, ":hover": { cursor: 'pointer' } }}>
+                    <Image src="/assets/flextransparentlogo.png" alt="logo" height={45} width={45} style={{ filter: 'grayscale(100%)' }} />
+                </Grid>
                 <Grid container display="flex" gap={1} alignItems="center" zIndex={999}>
                     <Button
                         href="https://pancakeswap.finance"
