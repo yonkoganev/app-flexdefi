@@ -13,6 +13,7 @@ import SuccessfullTransactionModal from "../Modals/SuccessfulTransactionModal";
 import { useGetLastCheckedSupplyDay } from "../web3/hooks/useGetLastCheckedSupplyDay";
 import { useGetCurrentDay } from "../web3/hooks/useGetCurrentDay";
 import { borderColor, cardColor } from "@/constants/colors";
+import { useBpdPool } from "../web3/hooks/useBpdPool";
 
 const CountdownBox = () => {
     const { day, formatted } = Countdown();
@@ -21,6 +22,7 @@ const CountdownBox = () => {
     const { triggerDay } = useTriggerDay();
     const { triggerBPD } = useTriggerBPD();
     const { data: BUSDPool, refetch: refetchBUSDPool } = useGetBUSDPool();
+    const { USDTPOOL, bpdDistributed, bpdPoolSnapshot } = useBpdPool();
     const { data: currentDay, refetch: refetchCurrentDay } = useGetCurrentDay();
     const { data: lastCheckedDay, refetch: refetchLastCheckedDay } = useGetLastCheckedSupplyDay();
 
@@ -65,11 +67,16 @@ const CountdownBox = () => {
     };
 
     useEffect(() => {
-        if (!BUSDPool) return;
-        if (Number(formatEther(BUSDPool)) >= 1000) {
-            setCanConsumeBPD(true);
-        } else setCanConsumeBPD(false);
-    }, [BUSDPool])
+        if (USDTPOOL.isLoading || bpdPoolSnapshot.isLoading || bpdDistributed.isLoading) return;
+        if (USDTPOOL.data === undefined || bpdPoolSnapshot.data === undefined || bpdDistributed.data === undefined) return;
+
+        const snapshotBigEnough = Number(formatEther(bpdPoolSnapshot.data)) > 1000;
+        const notFullyDistributed = bpdDistributed.data < bpdPoolSnapshot.data;
+        const poolNotDrained = Number(formatEther(USDTPOOL.data)) >= 1000;
+
+        setCanConsumeBPD(snapshotBigEnough && notFullyDistributed && poolNotDrained);
+
+    }, [USDTPOOL.data, USDTPOOL.isLoading, bpdPoolSnapshot.data, bpdPoolSnapshot.isLoading, bpdDistributed.data, bpdDistributed.isLoading]);
 
     return(
         <Grid container

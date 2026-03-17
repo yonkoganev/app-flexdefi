@@ -503,6 +503,8 @@ export const DAILY_AUCTIONS_ABI = [
 		"stateMutability": "pure",
 		"type": "function"
 	},
+	{"inputs":[],"name":"bpdDistributed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+	{"inputs":[],"name":"bpdPoolSnapshot","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
 	{
 		"inputs": [
 			{

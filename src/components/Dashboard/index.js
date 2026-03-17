@@ -9,6 +9,7 @@ import { Avatar, Grid, Typography } from "@mui/material";
 import { useGetCurrentDay } from "../web3/hooks/useGetCurrentDay";
 import AuctionStats from "./auctionstats";
 import CountdownBox from "./countdownbox";
+import { useBpdPool } from "../web3/hooks/useBpdPool";
 
 const Dash = () => {
     const { data: currentDay } = useGetCurrentDay();
