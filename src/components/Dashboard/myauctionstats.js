@@ -78,7 +78,7 @@ const MyAuctionStats = () => {
             const mFormatted = formatted / 1000000;
             return `${mFormatted.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })} M`
         } else if (formatted < 1000000 && formatted > 1000) {
-            const kFormatted = formatted / 1000000;
+            const kFormatted = formatted / 1000;
             return `${kFormatted.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })} K`
         } else {
             return formatted.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })
@@ -91,7 +91,7 @@ const MyAuctionStats = () => {
             const mFormatted = formatted / 1000000;
             return `${mFormatted.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })} M`
         } else if (formatted < 1000000 && formatted > 1000) {
-            const kFormatted = formatted / 1000000;
+            const kFormatted = formatted / 1000;
             return `${kFormatted.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })} K`
         } else {
             return formatted.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })

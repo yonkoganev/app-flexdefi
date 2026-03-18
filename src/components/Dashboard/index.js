@@ -9,11 +9,23 @@ import { Avatar, Grid, Typography } from "@mui/material";
 import { useGetCurrentDay } from "../web3/hooks/useGetCurrentDay";
 import AuctionStats from "./auctionstats";
 import CountdownBox from "./countdownbox";
-import { useBpdPool } from "../web3/hooks/useBpdPool";
+import { useEffect, useState } from "react";
+import { getTokenStats } from "@/hooks/tokenStats";
 
 const Dash = () => {
     const { data: currentDay } = useGetCurrentDay();
     const { address } = useAccount();
+
+    const [stats, setStats] = useState();
+
+    useEffect(() => {
+        async function load() {
+            const data = await getTokenStats();
+            setStats(data);
+        }
+
+        load();
+    }, []);
     return (
         <Grid container width="100%" display="flex" gap={2} my={10}>
             <Grid container width="100%" mb={1} direction="column" sx={{ mt: { lg: 5, md: 5, sm: 2, xs: 0 } }}>
@@ -34,7 +46,11 @@ const Dash = () => {
                         Total Market Cap
                     </Typography>
                     <Typography color={grey[500]} fontSize={22} fontWeight={900} mt={-0.5}>
-                        $<span style={{ color: grey[50] }}>0.00</span>
+                        $<span style={{ color: grey[50] }}>
+                            {stats?.marketCap
+                            ? Number(stats.marketCap).toLocaleString(undefined, { maximumFractionDigits: 0 })
+                            : "0.00"}
+                        </span>
                     </Typography>
                 </Grid>
                 <Grid container direction="column">
@@ -42,7 +58,11 @@ const Dash = () => {
                         Total Liquidity
                     </Typography>
                     <Typography color={grey[500]} fontSize={22} fontWeight={900} mt={-0.5}>
-                        $<span style={{ color: grey[50] }}>0.00</span>
+                        $<span style={{ color: grey[50] }}>
+                            {stats?.liquidity
+                            ? Number(stats.liquidity).toLocaleString(undefined, { maximumFractionDigits: 0 })
+                            : "0.00"}
+                        </span>
                     </Typography>
                 </Grid>
                 <Grid container direction="column">
