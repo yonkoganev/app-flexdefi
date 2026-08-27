@@ -220,7 +220,6 @@ const StakesList = ({ stakes, onChange }) => {
                     }}
             >
                 <MenuItem
-                    disabled={currentDay && selectedStake?.endDay < currentDay}
                     onClick={() => {
                         setAction(0);
                         setOpenModal(true);
@@ -231,7 +230,6 @@ const StakesList = ({ stakes, onChange }) => {
                     Rename
                 </MenuItem>
                 <MenuItem
-                    disabled={currentDay && selectedStake?.endDay < currentDay}
                     onClick={() => {
                         setAction(1);
                         setOpenModal(true);
@@ -242,7 +240,6 @@ const StakesList = ({ stakes, onChange }) => {
                     Transfer
                 </MenuItem>
                 <MenuItem
-                    disabled={selectedStake?.isIrrBFLEX === 1 || selectedStake?.isIrrBFLEX === 3 || selectedStake?.endDay < currentDay}
                     onClick={() => {
                         setAction(2);
                         setOpenModal(true);
@@ -253,7 +250,6 @@ const StakesList = ({ stakes, onChange }) => {
                     Claim rewards
                 </MenuItem>
                 <MenuItem
-                    disabled={selectedStake?.isIrrBFLEX === 1 || selectedStake?.isIrrBFLEX === 3 || selectedStake?.isActive !== 1}
                     onClick={() => {
                         setAction(3);
                         setOpenModal(true);
