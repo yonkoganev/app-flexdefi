@@ -85,18 +85,8 @@ const DailyAuctions = () => {
                 </Grid>
             </Grid>
             <Grid container width="100%" display="flex" justifyContent="center">
-                {currentDay > 150 || currentDay < 1 ?
-                    (
-                        <Typography color={grey[50]} fontSize={24} mt={5}>
-                            {currentDay > 150 ? 'Auction phase have ended on Day 150' : 'Auction phase starts on Day 1'}
-                        </Typography>
-                    ) : (
-                        <>
-                            <AuctionPanel />
-                            <History />
-                        </>
-                    )
-                }
+                <AuctionPanel />
+                <History />
             </Grid>
         </Grid>
     );
